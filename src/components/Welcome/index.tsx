@@ -5,10 +5,10 @@ import { Button, MainContainer, Text } from './index.styled';
 const WelcomeComponent: FC<{}> = memo(() => (
   <MainContainer>
     <Text>Welcome Earthlings!</Text>
-    <Link to="/example-1">
+    <Link to="/loop">
       <Button>Click me First!</Button>
     </Link>
-    <Link to="/example-2">
+    <Link to="/multiply">
       <Button>No Click me First!</Button>
     </Link>
   </MainContainer>
