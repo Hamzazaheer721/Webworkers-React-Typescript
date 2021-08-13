@@ -1,14 +1,15 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Welcome from './Welcome';
 
-const Routes: FC<{}> = () => (
-  <>
+const RoutesComponent: FC<{}> = memo(() => (
+  <div>
     <Router>
       <Switch>
-        <Route exact path="/" component={} />
+        <Route exact path="/" component={Welcome} />
       </Switch>
     </Router>
-  </>
-)
+  </div>
+));
 
-export default Routes;
+export default RoutesComponent;
