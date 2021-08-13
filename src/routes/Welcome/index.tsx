@@ -3,13 +3,12 @@ import {
 } from 'react';
 import LoaderComponent from '../../components/Loader';
 
-const Welcome:FC<{}> = memo((props) => {
-  const LazyView = lazy(() => import('./view'));
-  return (
-    <Suspense fallback={LoaderComponent}>
-      <LazyView {...props} />
-    </Suspense>
-  )
-})
+const LazyView = lazy(() => import('./view'));
+
+const Welcome:FC = memo((props) => (
+  <Suspense fallback={<LoaderComponent />}>
+    <LazyView {...props} />
+  </Suspense>
+));
 
 export default Welcome;
