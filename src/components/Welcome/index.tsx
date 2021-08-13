@@ -1,6 +1,16 @@
 import { FC, memo } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, MainContainer, Text } from './index.styled';
 
 const WelcomeComponent: FC<{}> = memo(() => (
-  <h1>Welcome to this container</h1>
+  <MainContainer>
+    <Text>Welcome Earthlings!</Text>
+    <Link to="/example-1">
+      <Button>Click me First!</Button>
+    </Link>
+    <Link to="/example-2">
+      <Button>No Click me First!</Button>
+    </Link>
+  </MainContainer>
 ))
 export default WelcomeComponent;
