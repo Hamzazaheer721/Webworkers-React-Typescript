@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 
 const MultiplyComponent: FC = memo(() => (
-  <h1>Multiplay Component</h1>
+  <h1>Multiply Component</h1>
 ));
 
 export default MultiplyComponent;
