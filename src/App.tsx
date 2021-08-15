@@ -1,8 +1,12 @@
 import { FC, memo } from 'react'
 import RoutesComponent from './routes';
+import GlobalStyle from './styles/Global';
 
 const App:FC <{}> = memo(() => (
-  <RoutesComponent />
+  <>
+    <GlobalStyle />
+    <RoutesComponent />
+  </>
 ));
 
 export default App;
