@@ -15,10 +15,8 @@ const LoopComponent : FC = memo(() => {
   }, [])
 
   const handleAppleCick = useCallback(() => {
-    for (let i = 0; i <= 1000000099999999999999999999; i++) {
-      if (i <= 10000000) {
-        setAppleCount((prevCount) => prevCount + 1)
-      }
+    let start = Date.now()
+    for (let i = start ; i < start + 5000; i++){
     }
   }, [])
   return (
