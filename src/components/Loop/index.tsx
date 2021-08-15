@@ -7,6 +7,9 @@ const LoopComponent : FC = memo(() => (
       <Button>
         Tomato
       </Button>
+      <Button>
+        Apple
+      </Button>
     </ButtonContainer>
   </Container>
 ));
