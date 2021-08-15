@@ -1,9 +1,13 @@
 import { FC, memo } from 'react';
-import { Container } from './index.styled';
+import { Button, ButtonContainer, Container } from './index.styled';
 
 const LoopComponent : FC = memo(() => (
   <Container>
-    <h1> Hey</h1>
+    <ButtonContainer>
+      <Button>
+        Tomato
+      </Button>
+    </ButtonContainer>
   </Container>
 ));
 
