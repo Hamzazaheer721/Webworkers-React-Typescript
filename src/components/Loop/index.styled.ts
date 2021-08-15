@@ -15,7 +15,7 @@ export const ButtonContainer = styled.div`
     height: 60px;
     padding: 5px;
     & :nth-child(2) {
-        margin-left: 200px;
+        margin-left: 20px;
     };
 `
 export const Button = styled.button`
@@ -26,4 +26,8 @@ export const Button = styled.button`
     color: white;
     white-space: normal;
     word-wrap: break-word;
+    &:active {
+        background-color: #28a745;
+        color: white;
+    }
 `

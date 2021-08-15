@@ -11,6 +11,7 @@ const LoopComponent : FC = memo(() => (
         Apple
       </Button>
     </ButtonContainer>
+
   </Container>
 ));
 
