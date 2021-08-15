@@ -1,6 +1,6 @@
 import { FC, memo } from 'react';
 import {
-  Button, ButtonContainer, Container, CountContainer,
+  Button, ButtonContainer, Container, CountContainer, Heading, StateHeading,
 } from './index.styled';
 
 const LoopComponent : FC = memo(() => (
@@ -14,8 +14,12 @@ const LoopComponent : FC = memo(() => (
       </Button>
     </ButtonContainer>
     <CountContainer>
-      <h1> hey</h1>
-
+      <Heading>Tomato</Heading>
+      <StateHeading>1</StateHeading>
+    </CountContainer>
+    <CountContainer>
+      <Heading>Apple</Heading>
+      <StateHeading>1</StateHeading>
     </CountContainer>
   </Container>
 ));

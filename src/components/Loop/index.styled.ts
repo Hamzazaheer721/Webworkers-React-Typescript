@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const ButtonContainer = styled.div`
     display: flex;
     position: relative;
-    top: 30px;
+    flex: 0.2;
     width: 100%;
     height: 60px;
     padding: 5px;
@@ -38,7 +38,17 @@ export const Button = styled.button`
 `
 export const CountContainer = styled.div`
     display: flex;
-    flex: 1;
+    flex: 0.4;
     justify-content: center;
     align-items: center;
+    padding-right: 20px;
+`
+export const Heading = styled.h1`
+    color: white;
+    font-weight: lighter;
+`
+export const StateHeading = styled.h1`
+    color: white;
+    font-style: italic;
+    margin: 0 10px 0 10px;
 `
