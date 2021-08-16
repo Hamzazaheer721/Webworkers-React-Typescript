@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface IButtonProps {
+    toggleButton? : boolean | undefined
+}
+
 export const Container = styled.div`
     position: absolute;
     height: 100%;
@@ -12,21 +16,12 @@ export const Container = styled.div`
 export const ButtonContainer = styled.div`
     display: flex;
     position: relative;
-    flex: 0.2;
-    width: 100%;
-    height: 60px;
-    padding: 5px;
-    justify-content: center;
-    align-items: center;
-    padding-right: 30px;
-    & :nth-child(2) {
-        margin-left: 20px;
-    };
+    justify-content: flex-start;
 `
-export const Button = styled.button`
+export const Button = styled.button<IButtonProps>`
     background-color: #24A0ED;
     height: 40px;
-    width: 60px; 
+    width: ${({ toggleButton }) => (toggleButton ? '120px' : '70px')}; 
     border-radius: 7px;
     color: white;
     white-space: normal;
@@ -51,4 +46,37 @@ export const StateHeading = styled.h1`
     color: white;
     font-style: italic;
     margin: 0 10px 0 10px;
+`
+
+export const IncrementButtonsContainer = styled.div`
+    display: flex;
+    flex: 0.6;
+    width: 100%;
+    height: 60px;
+    padding: 5px;
+    align-items: center;
+    padding-left: 30px;
+    & :nth-child(2) {
+        margin-left: 10px;
+    };
+
+`
+
+export const ToggleButtonContainer = styled.div`
+    flex: 0.4;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const SmallHeading = styled.h4`
+    margin-left: 20px;
+    color: white;
+    font-weight: light;
+`
+
+export const ModHeading = styled.h4`
+    margin-left: 10px;
+    color: white;
+    font-weight: lighter;
 `
