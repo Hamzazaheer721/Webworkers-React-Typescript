@@ -15,8 +15,9 @@ const LoopComponent : FC = memo(() => {
   }, [])
 
   const handleAppleCick = useCallback(() => {
-    let start = Date.now()
-    for (let i = start ; i < start + 5000; i++){
+    const start = Date.now();
+    for (let i = start; i <= 99999999999999; i++) {
+      i === 99999999999999 && setAppleCount((prevCount) => prevCount + 1)
     }
   }, [])
   return (
@@ -25,7 +26,7 @@ const LoopComponent : FC = memo(() => {
         <Button type="button" onClick={handleTomatoClick}>
           Tomato
         </Button>
-        <Button type="button">
+        <Button type="button" onClick={handleAppleCick}>
           Apple
         </Button>
       </ButtonContainer>
