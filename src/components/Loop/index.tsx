@@ -1,7 +1,5 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 import {
-  FC, memo, useCallback, useState,
+  FC, memo, useCallback, useEffect, useState,
 } from 'react';
 import {
   Button, ButtonContainer, Container,
@@ -15,6 +13,7 @@ const LoopComponent : FC = memo(() => {
   const [appleCount, setAppleCount] = useState<number>(0);
   const [currentMod, setCurrentMod] = useState<boolean>(false);
   const appleWorker: Worker = new Worker('./workers/worker.js')
+
   const handleModClick = useCallback(() => {
     setCurrentMod((prevState) => !prevState)
   }, [])
@@ -31,17 +30,15 @@ const LoopComponent : FC = memo(() => {
     }
   }, [])
 
-  const handleAppleClick = useCallback(() => {
-    // eslint-disable-next-line no-console
-    console.log('handle Click')
-    appleWorker.postMessage([appleCount])
+  useEffect(() => {
     appleWorker.onmessage = (event: MessageEvent) => {
       const { data } = event;
-      console.log('data being received', data)
-      // eslint-disable-next-line no-console
-      console.log(data)
       setAppleCount(data)
     }
+  }, [appleWorker]);
+
+  const handleAppleClick = useCallback(() => {
+    appleWorker.postMessage([appleCount])
   }, [appleCount])
 
   return (
