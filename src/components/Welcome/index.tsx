@@ -8,7 +8,8 @@ const WelcomeComponent: FC<{}> = memo(() => (
     <Link to="/loop">
       <Button>Click me First!</Button>
     </Link>
-    <Link to="/multiply">
+    {/* change the second path to /multiply after deploying */}
+    <Link to="/loop">
       <Button>No Click me First!</Button>
     </Link>
   </MainContainer>
