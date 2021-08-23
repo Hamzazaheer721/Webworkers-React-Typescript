@@ -1,6 +1,6 @@
 /* eslint-disable */
-
 const fs = require('fs');
+const WebWorkerPlugin = require('worker-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const resolve = require('resolve');
@@ -557,6 +557,7 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
+      new WebWorkerPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
