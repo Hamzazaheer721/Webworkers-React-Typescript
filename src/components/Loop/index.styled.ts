@@ -33,7 +33,7 @@ export const Button = styled.button<IButtonProps>`
 `
 export const CountContainer = styled.div`
     display: flex;
-    flex: 0.4;
+    flex: 0.3;
     justify-content: center;
     align-items: center;
     padding-right: 20px;

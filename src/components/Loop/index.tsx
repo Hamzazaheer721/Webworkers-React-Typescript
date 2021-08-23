@@ -65,6 +65,9 @@ const LoopComponent : FC = memo(() => {
         </ToggleButtonContainer>
       </ButtonContainer>
       <CountContainer>
+        <Heading>Clicking on Apple will perform heavy Computation</Heading>
+      </CountContainer>
+      <CountContainer>
         <Heading>Tomato: </Heading>
         <StateHeading>{tomatoCount}</StateHeading>
       </CountContainer>
