@@ -1,6 +1,8 @@
 import {
+  useRef,
   FC, memo, useCallback, useEffect, useState,
 } from 'react';
+
 import {
   Button, ButtonContainer, Container,
   CountContainer, Heading, IncrementButtonsContainer,
@@ -12,6 +14,7 @@ const LoopComponent : FC = memo(() => {
   const [tomatoCount, setTomatoCount] = useState<number>(0)
   const [appleCount, setAppleCount] = useState<number>(0);
   const [currentMod, setCurrentMod] = useState<boolean>(false);
+  const appleRef = useRef<number>(appleCount);
   const appleWorker: Worker = new Worker('./workers/worker.js')
 
   const handleModClick = useCallback(() => {
@@ -37,9 +40,10 @@ const LoopComponent : FC = memo(() => {
     }
   }, [appleWorker]);
 
-  const handleAppleClick = useCallback(() => {
-    appleWorker.postMessage([appleCount])
-  }, [appleCount])
+  const handleAppleClick = () => {
+    appleRef.current++;
+    appleWorker.postMessage([appleRef.current])
+  }
 
   return (
     <Container>
