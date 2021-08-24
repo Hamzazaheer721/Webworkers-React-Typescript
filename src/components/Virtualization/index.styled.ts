@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
 export const Heading = styled.h1`
     color: white;
     font-weight: lighter;
-`
-export const StateHeading = styled.h1`
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `

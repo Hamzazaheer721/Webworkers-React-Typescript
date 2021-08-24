@@ -1,7 +1,7 @@
 import {
   ChangeEvent, useCallback, FC, useState, memo,
 } from 'react';
-import InputField from './index.styled';
+import { InputField, InputWrapper } from './index.styled';
 
 interface InputPropsComponent {
   // eslint-disable-next-line no-unused-vars
@@ -17,7 +17,9 @@ const InputComponent : FC<InputPropsComponent> = memo(({ changeValue }: InputPro
   }, [])
 
   return (
-    <InputField type="text" placeholder="Write something" value={value} onChange={changeInput} />
+    <InputWrapper>
+      <InputField type="text" placeholder="Write something" value={value} onChange={changeInput} />
+    </InputWrapper>
   )
 })
 

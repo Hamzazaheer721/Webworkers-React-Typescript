@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
-
 import {
-  useCallback, useEffect, FC, memo, useState,
+  useCallback, FC, memo, useState,
 } from 'react';
 import Data from '../../assets/json/generated.json'
 import IDataType from '../../helper/types';
@@ -16,17 +15,12 @@ const VirtualizedComponent: FC = memo(() => {
   const changeValue = useCallback((_val : string) => {
     setValue(_val)
   }, [])
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log(data)
-    console.info('value', value)
-  }, [value])
 
   return (
     <Wrapper>
       <Heading>Virtualized Component</Heading>
       <InputComponent changeValue={changeValue} />
-      <TableComponent data={data} />
+      <TableComponent data={data} value={value} />
     </Wrapper>
 
   )

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const InputField = styled.input`
+export const InputField = styled.input`
   font-family: inherit;
   width: 300px;
   outline: 0;
@@ -17,4 +17,8 @@ const InputField = styled.input`
     opacity: 0.7;
   }
 `
-export default InputField;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  margin: 50px 0 30px 30px;
+`
