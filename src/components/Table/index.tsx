@@ -7,6 +7,7 @@ interface ITableProps{
   data : IDataType[],
   value: string
 }
+
 const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
   console.log('Data', data)
   console.log('value', value)
