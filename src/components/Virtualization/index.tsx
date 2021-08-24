@@ -3,7 +3,7 @@ import {
   useCallback, FC, memo, useState,
 } from 'react';
 import Data from '../../assets/json/generated.json'
-import IDataType from '../../helper/types';
+import { IDataType } from '../../helper/types';
 import InputComponent from '../InputField';
 import TableComponent from '../Table';
 import { Heading, Wrapper } from './index.styled';

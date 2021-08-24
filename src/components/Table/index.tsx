@@ -2,7 +2,7 @@
 import {
   FC, memo, useCallback, useEffect, useState,
 } from 'react';
-import IDataType from '../../helper/types';
+import { IDataType } from '../../helper/types';
 import { Table, TableWrapper } from './index.styled';
 
 interface ITableProps{
@@ -14,19 +14,24 @@ const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
   const [filteredData, setFilteredData] = useState<IDataType[]>(data)
   const worker : Worker = new Worker('./workers/worker.js')
 
+  // to fetch the filtered data
   useEffect(() => {
     worker.onmessage = (e : MessageEvent) => {
       setFilteredData(e.data);
     }
   }, [worker])
 
+  // sending data to webworker for filtering
   const filterData = useCallback(() => {
     worker.postMessage([data, value])
   }, [value])
 
+  // filter data on value change
   useEffect(() => {
     filterData();
   }, [value])
+
+  //
 
   return (
     <TableWrapper>

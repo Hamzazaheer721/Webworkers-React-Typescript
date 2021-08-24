@@ -1,4 +1,4 @@
-type IDataType = {
+export type IDataType = {
     phone: string,
     address: string,
     _id: string,
@@ -11,4 +11,12 @@ type IDataType = {
     email: string
 
 }
-export default IDataType;
+
+export type IGearUpSettingsProps = {
+  itemHeight: number,
+  amount: number,
+  tolerance: number,
+  minIndex: number,
+  maxIndex: number,
+  startIndex: number
+}
