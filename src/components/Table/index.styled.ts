@@ -28,14 +28,12 @@ export const TableWrapper = styled.div`
     background-color: #555;
     
   }
-
-
 `
 export const Table = styled.table`
   width: 100%;
   height: 100%;
   border-collapse: collapse;
-  overflow: hidden;
+  overflow-y: auto;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
   th{
     font-weight: bold;

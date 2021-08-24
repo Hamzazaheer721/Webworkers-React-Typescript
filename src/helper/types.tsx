@@ -12,7 +12,16 @@ export type IDataType = {
 
 }
 
-export type IGearUpSettingsProps = {
+export type IGearUpSettingsType = {
+  itemHeight: number,
+  amount: number,
+  tolerance: number,
+  minIndex: number,
+  maxIndex: number,
+  startIndex: number
+}
+
+export type ISettingsType = {
   itemHeight: number,
   amount: number,
   tolerance: number,

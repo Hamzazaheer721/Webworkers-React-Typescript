@@ -1,7 +1,7 @@
-import { IGearUpSettingsProps } from '../../helper/types';
+import { IGearUpSettingsType } from '../../helper/types';
 
 /* eslint-disable no-unused-vars */
-const gearUpSettings = (value : IGearUpSettingsProps) => {
+const gearUpSettings = (value : IGearUpSettingsType) => {
 
 }
 
