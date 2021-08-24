@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
 `
 
 export const Heading = styled.h1`
-  flex: 0.1;
   color: white;
   font-weight: lighter;
   display: flex;

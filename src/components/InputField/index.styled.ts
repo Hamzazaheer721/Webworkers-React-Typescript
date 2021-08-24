@@ -19,7 +19,6 @@ export const InputField = styled.input`
 `
 
 export const InputWrapper = styled.div`
-  flex: 0.1;
   display: flex;
-  margin: 20px 0 30px 30px;
+  margin: 80px 0 30px 30px;
 `

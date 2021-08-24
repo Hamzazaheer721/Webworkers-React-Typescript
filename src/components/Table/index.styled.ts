@@ -3,14 +3,13 @@ import styled from 'styled-components'
 export const TableWrapper = styled.div`
   background: linear-gradient(45deg, #2193b0, #5f2c82);
   margin-top: 50px;
-  flex:0.8;
   margin-bottom: 20px;
-  height: 100%;
+  height: 600px;
   width: 800px;
   border-radius: 5px;
   margin-left: 20px; 
   align-self: center;
-  overflow: auto;
+  overflow-y: auto;
   &::-webkit-scrollbar-track{
     -webkit-box-shadow: inset 10px 10px 18px rgba(0,0,0,0.3);
     border-radius: 10px;
