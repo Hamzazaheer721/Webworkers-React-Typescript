@@ -21,9 +21,9 @@ export const Text = styled.h2`
 
 export const Button = styled.button`
     margin: 10px 0 10px 0;
-    width : 80px;
+    width : 100px;
     height: auto;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 12px;
     padding: 5px 10px;
 `

@@ -6,11 +6,10 @@ const WelcomeComponent: FC<{}> = memo(() => (
   <MainContainer>
     <Text>Welcome Earthlings!</Text>
     <Link to="/loop">
-      <Button>Click me First!</Button>
+      <Button>Webworker</Button>
     </Link>
-    {/* change the second path to /multiply after deploying */}
-    <Link to="/loop">
-      <Button>No Click me First!</Button>
+    <Link to="/virtualization">
+      <Button>Virtualization</Button>
     </Link>
   </MainContainer>
 ))

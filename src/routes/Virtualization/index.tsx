@@ -5,9 +5,9 @@ import LoaderComponent from '../../components/Loader';
 
 const LazyView = lazy(() => import('./view'));
 
-const Multiply : FC = memo((props) => (
+const Virtualization : FC = memo((props) => (
   <Suspense fallback={<LoaderComponent />}>
     <LazyView {...props} />
   </Suspense>
 ))
-export default Multiply;
+export default Virtualization;

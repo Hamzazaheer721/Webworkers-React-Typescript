@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
-import MultiplyComponent from '../../components/Multiply';
+import VirtualizedComponent from '../../components/Virtualization';
 
 const ViewComponent: FC = memo(() => (
-  <MultiplyComponent />
+  <VirtualizedComponent />
 ));
 export default ViewComponent;
