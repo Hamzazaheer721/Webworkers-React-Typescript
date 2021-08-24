@@ -11,9 +11,22 @@ const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
   console.log('value', value)
   return (
     <table>
-      <th>
-        hmm
-      </th>
+      <thead>
+        <tr>
+          <th> Age </th>
+          <th> Name </th>
+          <th> Gender </th>
+          <th> Email </th>
+        </tr>
+      </thead>
+      {data.map((row) => (
+        <tbody>
+          <tr>{row.age}</tr>
+          <tr>{row.name}</tr>
+          <tr>{row.gender}</tr>
+          <tr>{row.email}</tr>
+        </tbody>
+      ))}
     </table>
   )
 })
