@@ -1,13 +1,6 @@
-/* eslint-disable no-unused-vars */
-type IGearUpSettingsProps = {
-  itemHeight: number,
-  amount: number,
-  tolerance: number,
-  minIndex: number,
-  maxIndex: number,
-  startIndex: number
-}
+import { IGearUpSettingsProps } from '../../helper/types';
 
+/* eslint-disable no-unused-vars */
 const gearUpSettings = (value : IGearUpSettingsProps) => {
 
 }
