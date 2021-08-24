@@ -31,8 +31,9 @@ const VirtualizedComponent: FC = memo(() => {
   }, [])
   useEffect(() => {
     // eslint-disable-next-line no-console
+    console.log(data)
     console.info('value', value)
-  }, [data])
+  }, [value])
 
   return (
     <Wrapper>

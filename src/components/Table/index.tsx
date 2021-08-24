@@ -1,13 +1,11 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
-const TableComponent: FC = () => (
+const TableComponent: FC = memo(() => (
   <table>
     <th>
-      <td>
-        asda
-      </td>
+      hmm
     </th>
   </table>
-)
+))
 
 export default TableComponent
