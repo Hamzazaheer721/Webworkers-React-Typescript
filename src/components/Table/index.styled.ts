@@ -12,14 +12,14 @@ export const TableWrapper = styled.div`
   align-self: center;
   overflow: auto;
   &::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-box-shadow: inset 10px 10px 18px rgba(0,0,0,0.3);
     border-radius: 10px;
-    background: linear-gradient(50deg, #5f2c82,#2193b0);
+    background: #fff;
   }
 
   &::-webkit-scrollbar{
     width: 16px;
-    background: #5f2c82;
+    background: #fff;
     border-radius: 2px;
   }
 
