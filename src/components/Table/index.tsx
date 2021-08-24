@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
-import { FC, memo } from 'react';
+import {
+  FC, memo, useCallback, useEffect, useState,
+} from 'react';
 import IDataType from '../../helper/types';
 import { Table, TableWrapper } from './index.styled';
 
@@ -9,8 +11,23 @@ interface ITableProps{
 }
 
 const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
-  console.log('Data', data)
-  console.log('value', value)
+  const [filteredData, setFilteredData] = useState<IDataType[]>(data)
+  const worker : Worker = new Worker('./workers/worker.js')
+
+  useEffect(() => {
+    worker.onmessage = (e : MessageEvent) => {
+      setFilteredData(e.data);
+    }
+  }, [worker])
+
+  const filterData = useCallback(() => {
+    worker.postMessage([data, value])
+  }, [value])
+
+  useEffect(() => {
+    filterData();
+  }, [value])
+
   return (
     <TableWrapper>
       <Table>
@@ -23,9 +40,9 @@ const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((row) => (
+          {filteredData.map((row) => (
             // eslint-disable-next-line no-underscore-dangle
-            <tr id={row._id}>
+            <tr key={row._id}>
               <td>{row.age}</td>
               <td>{row.name}</td>
               <td>{row.gender}</td>

@@ -1,6 +1,7 @@
 import {
-  ChangeEvent, useCallback, FC, useState, memo,
+  FC, memo, useRef,
 } from 'react';
+import debounce from 'lodash/debounce'
 import { InputField, InputWrapper } from './index.styled';
 
 interface InputPropsComponent {
@@ -9,16 +10,15 @@ interface InputPropsComponent {
 }
 
 const InputComponent : FC<InputPropsComponent> = memo(({ changeValue }: InputPropsComponent) => {
-  const [value, setValue] = useState<string>('')
+  const valueRef = useRef<HTMLInputElement | null>(null)
 
-  const changeInput = useCallback((e : ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
-    changeValue(e.target.value);
-  }, [])
+  const changeInput = debounce(() => {
+    valueRef.current && changeValue(valueRef.current.value);
+  }, 1000)
 
   return (
     <InputWrapper>
-      <InputField type="text" placeholder="Write something" value={value} onChange={changeInput} />
+      <InputField type="text" placeholder="Write something" ref={valueRef} onChange={changeInput} />
     </InputWrapper>
   )
 })
