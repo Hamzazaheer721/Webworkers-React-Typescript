@@ -1,6 +1,10 @@
 import { FC, memo } from 'react';
+import IDataType from '../../helper/types';
 
-const TableComponent: FC = memo(() => (
+interface ITableProps{
+  data : IDataType[]
+}
+const TableComponent: FC<ITableProps> = memo(({ data }: ITableProps) => (
   <table>
     <th>
       hmm

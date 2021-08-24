@@ -4,26 +4,13 @@ import {
   useCallback, useEffect, FC, memo, useState,
 } from 'react';
 import Data from '../../assets/json/generated.json'
+import IDataType from '../../helper/types';
 import InputComponent from '../InputField';
 import TableComponent from '../Table';
 import { Heading, Wrapper } from './index.styled';
 
-interface IDataProps {
-    phone: string,
-    address: string,
-    _id: string,
-    guid: string,
-    picture: string,
-    age : number,
-    name: string,
-    gender: string,
-    company: string,
-    email: string
-
-}
-
 const VirtualizedComponent: FC = memo(() => {
-  const [data] = useState<IDataProps[]>(Data)
+  const [data] = useState<IDataType[]>(Data)
   const [value, setValue] = useState<string>('');
 
   const changeValue = useCallback((_val : string) => {
@@ -39,7 +26,7 @@ const VirtualizedComponent: FC = memo(() => {
     <Wrapper>
       <Heading>Virtualized Component</Heading>
       <InputComponent changeValue={changeValue} />
-      <TableComponent />
+      <TableComponent data={data} />
     </Wrapper>
 
   )
