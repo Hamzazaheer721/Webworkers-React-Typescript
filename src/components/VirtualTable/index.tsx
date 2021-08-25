@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-param-reassign */
 import React, { useState, useEffect, useRef } from 'react';
@@ -52,8 +54,7 @@ function VirtualTable(props: Parameters<typeof Table>[0]) {
   const renderVirtualList = (rawData: object[], { scrollbarSize, ref, onScroll }: any) => {
     ref.current = connectObject;
     const totalHeight = rawData.length * 54;
-    // eslint-disable-next-line no-console
-    console.log('asdsa', rawData)
+
     return (
       <Grid
         ref={gridRef}
@@ -88,6 +89,7 @@ function VirtualTable(props: Parameters<typeof Table>[0]) {
             })}
             style={style}
           >
+            {/* {(_data as any).name} */}
             {(rawData[rowIndex] as any)[(mergedColumns as any)[columnIndex].dataIndex]}
             {/* {rawData[rowIndex]} */}
           </div>
