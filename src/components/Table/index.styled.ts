@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-export const TableWrapper = styled.div`
+export const TableWrapper = styled.div<{height : number}>`
   background: linear-gradient(45deg, #2193b0, #5f2c82);
   margin-top: 50px;
   margin-bottom: 20px;
-  height: 600px;
+  height: ${({ height }) => height};
   width: 800px;
   border-radius: 5px;
   margin-left: 20px; 

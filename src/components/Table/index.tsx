@@ -3,35 +3,30 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import React, {
-  FC, memo, UIEvent, useCallback, useEffect, useRef, useState,
+  FC, memo, UIEvent, UIEventHandler, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { IDataType, ISettingsType } from '../../helper/types';
 import { Table, TableWrapper } from './index.styled';
 
-interface ITableProps{
-  data : IDataType[],
+interface ITableProps {
+  data: IDataType[],
   value: string
 }
-const InitialValue : ISettingsType = {
+const InitialValue: ISettingsType = {
   itemHeight: 20,
   amount: 15,
-  tolerance: 5,
-  minIndex: 0,
+  tolerance: 15,
+  minIndex: 1,
   maxIndex: 392,
-  startIndex: 0,
+  startIndex: 1,
 }
 
-// type IRunScrollType = {
-//   target : {
-//     ScrollTop: number
-//   };
-// }
 const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
   const [filteredData, setFilteredData] = useState<IDataType[]>(data)
-  const worker : Worker = new Worker('./workers/worker.js')
+  const worker: Worker = new Worker('./workers/worker.js')
   const tableRef = useRef<HTMLDivElement>(null)
 
-  const settings :ISettingsType = InitialValue;
+  const settings: ISettingsType = InitialValue;
 
   const [viewportHeight, setViewportHeight] = useState<number>(settings.amount * settings.itemHeight);
   const [totalHeight, setTotalHeight] = useState<number>((settings.maxIndex - settings.minIndex + 1) * settings.itemHeight);
@@ -44,7 +39,7 @@ const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
   const [initialPosition, setInitialPosition] = useState<number>(topPaddingHeight + toleranceHeight);
   const [virtualData, setVirtualData] = useState<any>([]);
 
-  const getData = (offset: number, limit : number) => {
+  const getData = (offset: number, limit: number) => {
     // eslint-disable-next-line no-underscore-dangle
     const _data = [];
     const start = Math.max(settings.minIndex, offset);
@@ -60,10 +55,10 @@ const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
     return _data;
   };
 
-  const runScroller = (e: React.UIEvent<HTMLDivElement>) => {
-    console.log(e)
-    const index = settings.minIndex + Math.floor((e.target. - toleranceHeight) / settings.itemHeight);
+  const passScroller = useCallback((scrollTop: number) => {
+    const index = settings.minIndex + Math.floor((scrollTop - toleranceHeight) / settings.itemHeight);
     const _data = getData(index, bufferedItems);
+    console.log('data : ', _data)
     const _topPaddingHeight = Math.max((index - settings.minIndex) * settings.itemHeight, 0);
     const _bottomPaddingHeight = Math.max(
       totalHeight - topPaddingHeight - _data.length * settings.itemHeight,
@@ -72,11 +67,16 @@ const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
     setTopPaddingHeight(_topPaddingHeight);
     setBottomPaddingHeight(_bottomPaddingHeight);
     setVirtualData(_data)
-  }
+  }, [])
+
+  const runScroller = useCallback((e: UIEvent<HTMLDivElement>) => {
+    const { target } = e;
+    passScroller((e.target as HTMLDivElement).scrollTop)
+  }, [])
 
   // to fetch the filtered data
   useEffect(() => {
-    worker.onmessage = (e : MessageEvent) => {
+    worker.onmessage = (e: MessageEvent) => {
       setFilteredData(e.data);
     }
   }, [worker])
@@ -91,10 +91,18 @@ const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
     filterData();
   }, [value])
 
-  //
+  // UseEffect for initialPosition
+  useEffect(() => {
+    if (tableRef.current) {
+      tableRef.current.scrollTop = initialPosition;
+      if (!initialPosition) {
+        passScroller(0);
+      }
+    }
+  }, [])
 
   return (
-    <TableWrapper ref={tableRef} onScroll={runScroller}>
+    <TableWrapper ref={tableRef} onScroll={runScroller} height={viewportHeight}>
       <Table>
         <thead>
           <tr>
@@ -106,7 +114,7 @@ const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
         </thead>
         <tbody>
           <div style={{ height: topPaddingHeight }} />
-          {virtualData.map((row : any) => (
+          {virtualData.map((row: any) => (
             // eslint-disable-next-line no-underscore-dangle
             <tr key={row._id}>
               <td>{row.age}</td>
