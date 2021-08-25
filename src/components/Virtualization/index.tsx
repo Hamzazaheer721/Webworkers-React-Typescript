@@ -18,15 +18,14 @@ const VirtualizedComponent: FC = memo(() => {
   }, [])
   // Usage
   const columns = [
-    { title: 'A', dataIndex: 'key', width: 150 },
-    { title: 'B', dataIndex: 'key' },
-    { title: 'C', dataIndex: 'key' },
-    { title: 'D', dataIndex: 'key' },
-    { title: 'E', dataIndex: 'key', width: 200 },
-    { title: 'F', dataIndex: 'key', width: 100 },
+    { title: 'Name', dataIndex: 'Name', width: 300 },
+    { title: 'Age', dataIndex: 'Age', width: 300 },
+    { title: 'Gender', dataIndex: 'Gender', width: 300 },
+    { title: 'Company', dataIndex: 'Company', width: 300 },
+    { title: 'Email', dataIndex: 'Email', width: 300 },
   ];
 
-  const virtualData = Array.from({ length: 100000 }, (_, key) => ({ key }));
+  const virtualData = Array.from(data);
   return (
     <Wrapper>
       <Heading>Virtualized Component</Heading>

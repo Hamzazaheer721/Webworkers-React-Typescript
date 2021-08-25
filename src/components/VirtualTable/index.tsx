@@ -4,15 +4,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import { VariableSizeGrid as Grid } from 'react-window';
 import ResizeObserver from 'rc-resize-observer';
 import classNames from 'classnames';
-import { Table } from 'antd';
+// import { Table } from 'antd'
+import Table from './index.styled'
 // import './index.css'
 
 function VirtualTable(props: Parameters<typeof Table>[0]) {
-  const { columns, scroll } = props;
+  const { columns, scroll, dataSource } = props;
+  // eslint-disable-next-line no-console
+  console.log(dataSource)
   const [tableWidth, setTableWidth] = useState(0);
 
-  const widthColumnCount = columns!.filter(({ width }) => !width).length;
-  const mergedColumns = columns!.map((column) => {
+  const widthColumnCount = columns!.filter((width: any) => !width).length;
+  const mergedColumns = columns!.map((column: any) => {
     if (column.width) {
       return column;
     }
@@ -38,7 +41,7 @@ function VirtualTable(props: Parameters<typeof Table>[0]) {
   });
 
   const resetVirtualGrid = () => {
-    gridRef.current.resetAfterIndices({
+    gridRef?.current?.resetAfterIndices({
       columnIndex: 0,
       shouldForceUpdate: true,
     });
@@ -49,7 +52,8 @@ function VirtualTable(props: Parameters<typeof Table>[0]) {
   const renderVirtualList = (rawData: object[], { scrollbarSize, ref, onScroll }: any) => {
     ref.current = connectObject;
     const totalHeight = rawData.length * 54;
-
+    // eslint-disable-next-line no-console
+    console.log('asdsa', rawData)
     return (
       <Grid
         ref={gridRef}
@@ -85,6 +89,7 @@ function VirtualTable(props: Parameters<typeof Table>[0]) {
             style={style}
           >
             {(rawData[rowIndex] as any)[(mergedColumns as any)[columnIndex].dataIndex]}
+            {/* {rawData[rowIndex]} */}
           </div>
         )}
       </Grid>
