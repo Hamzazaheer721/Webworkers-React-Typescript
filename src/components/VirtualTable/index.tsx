@@ -7,7 +7,7 @@ import { VariableSizeGrid as Grid } from 'react-window';
 import ResizeObserver from 'rc-resize-observer';
 import classNames from 'classnames';
 // import { Table } from 'antd'
-import Table from './index.styled'
+import Table, { VirtualTableCell } from './index.styled'
 // import './index.css'
 
 function VirtualTable(props: Parameters<typeof Table>[0]) {
@@ -81,18 +81,17 @@ function VirtualTable(props: Parameters<typeof Table>[0]) {
         }: {
           columnIndex: number;
           rowIndex: number;
-          style: React.CSSProperties;
+          style: React.CSSProperties
         }) => (
-          <div
+          <VirtualTableCell
             className={classNames('virtual-table-cell', {
               'virtual-table-cell-last': columnIndex === mergedColumns.length - 1,
             })}
             style={style}
+            leftGap={columnIndex}
           >
-            {/* {(_data as any).name} */}
             {(rawData[rowIndex] as any)[(mergedColumns as any)[columnIndex].dataIndex]}
-            {/* {rawData[rowIndex]} */}
-          </div>
+          </VirtualTableCell>
         )}
       </Grid>
     );

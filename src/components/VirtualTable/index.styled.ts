@@ -7,7 +7,7 @@ const TableAnt = styled(Table)`
     margin-top: 50px;
     margin-bottom: 20px;
     border-radius: 5px;
-    margin-left: 20px; 
+    margin-left: 10px; 
     align-self: center;
     overflow-y: auto;
   //   &::-webkit-scrollbar-track{
@@ -32,6 +32,31 @@ const TableAnt = styled(Table)`
   .ant-table-cell{
     padding: 40px;
   }
+`
+const handleLeft = (left: number) => {
+  switch (left) {
+    case 0:
+      return '0px';
+    case 1:
+      return '170px !important';
+    case 2:
+      return '330px !important';
+    case 3:
+      return '530px !important';
+    default:
+      return '760px !important';
+  }
+}
 
+export const VirtualTableCell = styled.div<{leftGap : number}>`
+  display: flex;
+  margin-left: 40px;
+  word-wrap: no-wrap;
+  white-space: no-wrap;
+  overflow: hidden;
+  &.virtual-table-cell{
+    left: ${({ leftGap }) => handleLeft(leftGap)}
+  }
+  
 `
 export default TableAnt;

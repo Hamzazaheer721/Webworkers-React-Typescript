@@ -18,10 +18,10 @@ const VirtualizedComponent: FC = memo(() => {
   }, [])
   // Usage
   const columns = [
-    { title: 'Name', dataIndex: 'name', width: 300 },
-    { title: 'Age', dataIndex: 'age', width: 300 },
-    { title: 'Gender', dataIndex: 'gender', width: 300 },
-    { title: 'Company', dataIndex: 'company', width: 300 },
+    { title: 'Name', dataIndex: 'name', width: 150 },
+    { title: 'Age', dataIndex: 'age', width: 90 },
+    { title: 'Gender', dataIndex: 'gender', width: 220 },
+    { title: 'Company', dataIndex: 'company', width: 200 },
     { title: 'Email', dataIndex: 'email', width: 300 },
   ];
 
