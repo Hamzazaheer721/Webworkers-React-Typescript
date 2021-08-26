@@ -16,7 +16,6 @@ self.onmessage = (e) => {
     let _array = []
     let bigData = data[0]
     let value = data[1]
-    console.log(value)
     bigData.forEach((_data) => {
       if (
         _data.name.toLowerCase().trim().includes(value.toLowerCase().trim())
