@@ -28,8 +28,6 @@ export const TableWrapper = styled.div`
     background-color: #555;
     
   }
-
-
 `
 export const Table = styled.table`
   width: 100%;

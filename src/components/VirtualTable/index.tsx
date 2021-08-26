@@ -6,9 +6,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { VariableSizeGrid as Grid } from 'react-window';
 import ResizeObserver from 'rc-resize-observer';
 import classNames from 'classnames';
-// import { Table } from 'antd'
 import Table, { VirtualTableCell } from './index.styled'
-// import './index.css'
 
 function VirtualTable(props: Parameters<typeof Table>[0]) {
   const { columns, scroll, dataSource } = props;
