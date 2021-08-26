@@ -1,21 +1,20 @@
-/* eslint-disable no-console */
 import {
   FC, memo, useCallback, useEffect, useState,
 } from 'react';
 import IDataType from '../../helper/types';
 import { Table, TableWrapper } from './index.styled';
 
-interface ITableProps{
-  data : IDataType[],
+interface ITableProps {
+  data: IDataType[],
   value: string
 }
 
 const TableComponent: FC<ITableProps> = memo(({ data, value }: ITableProps) => {
   const [filteredData, setFilteredData] = useState<IDataType[]>(data)
-  const worker : Worker = new Worker('./workers/worker.js')
+  const worker: Worker = new Worker('./workers/worker.js')
 
   useEffect(() => {
-    worker.onmessage = (e : MessageEvent) => {
+    worker.onmessage = (e: MessageEvent) => {
       setFilteredData(e.data);
     }
   }, [worker])
