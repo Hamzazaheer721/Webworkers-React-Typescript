@@ -37,9 +37,9 @@ const LoopComponent: FC = memo(() => {
     }
   }, [burgerWorker]);
 
-  const handleAppleClick = () => {
+  const handleAppleClick = useCallback(() => {
     burgerWorker.postMessage([burgerCount])
-  }
+  }, [])
 
   return (
     <Container>
