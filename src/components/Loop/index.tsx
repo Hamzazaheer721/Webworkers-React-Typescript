@@ -54,7 +54,7 @@ const LoopComponent: FC = memo(() => {
         </IncrementButtonsContainer>
         <ToggleButtonContainer>
           <Button type="button" onClick={handleModClick} toggleButton>
-            Toggle Mod
+            Toggle Mode
           </Button>
           <SmallHeading>
             Current Mode:
