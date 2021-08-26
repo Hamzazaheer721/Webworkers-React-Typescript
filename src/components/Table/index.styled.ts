@@ -36,18 +36,23 @@ export const Table = styled.table`
   width: 100%;
   height: 100%;
   border-collapse: collapse;
-  overflow: hidden;
+  table-layout: fixed;
+  overflow: auto;
   box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  
   th{
     font-weight: bold;
   }
   td{
-      font-weight: 100;
+    font-weight: 100;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   th,td {
     padding: 15px;
     background-color: rgba(255,255,255,0.2);
-      color: #d8d8d8;
+    color: #d8d8d8;
   }
   th {
     text-align: left;
