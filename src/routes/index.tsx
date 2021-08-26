@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Loop from './Loop';
-import Virtualization from './Virtualization';
+import Filter from './Filter';
 import Welcome from './Welcome';
 
 const RoutesComponent: FC<{}> = memo(() => (
@@ -9,7 +9,7 @@ const RoutesComponent: FC<{}> = memo(() => (
     <Switch>
       <Route exact path="/" component={Welcome} />
       <Route exact path="/loop" component={Loop} />
-      <Route exact path="/virtualization" component={Virtualization} />
+      <Route exact path="/filter" component={Filter} />
     </Switch>
   </Router>
 ));

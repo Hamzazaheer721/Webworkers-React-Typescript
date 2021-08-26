@@ -8,8 +8,8 @@ const WelcomeComponent: FC<{}> = memo(() => (
     <Link to="/loop">
       <Button>Webworker</Button>
     </Link>
-    <Link to="/virtualization">
-      <Button>Virtualization</Button>
+    <Link to="/filter">
+      <Button>Filter with Webpack</Button>
     </Link>
   </MainContainer>
 ))

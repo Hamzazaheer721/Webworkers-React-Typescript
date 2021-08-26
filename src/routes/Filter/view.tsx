@@ -1,7 +1,7 @@
 import { FC, memo } from 'react';
-import VirtualizedComponent from '../../components/Virtualization';
+import FilterComponent from '../../components/Filter';
 
 const ViewComponent: FC = memo(() => (
-  <VirtualizedComponent />
+  <FilterComponent />
 ));
 export default ViewComponent;

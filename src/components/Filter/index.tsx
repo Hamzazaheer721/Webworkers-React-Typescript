@@ -8,17 +8,17 @@ import InputComponent from '../InputField';
 import TableComponent from '../Table';
 import { Heading, Wrapper } from './index.styled';
 
-const VirtualizedComponent: FC = memo(() => {
+const FilterComponent: FC = memo(() => {
   const [data] = useState<IDataType[]>(Data)
   const [value, setValue] = useState<string>('');
 
-  const changeValue = useCallback((_val : string) => {
+  const changeValue = useCallback((_val: string) => {
     setValue(_val)
   }, [])
 
   return (
     <Wrapper>
-      <Heading>Virtualized Component</Heading>
+      <Heading>Filter Component</Heading>
       <InputComponent changeValue={changeValue} />
       <TableComponent data={data} value={value} />
     </Wrapper>
@@ -26,4 +26,4 @@ const VirtualizedComponent: FC = memo(() => {
   )
 });
 
-export default VirtualizedComponent;
+export default FilterComponent;
