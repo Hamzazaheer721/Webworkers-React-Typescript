@@ -1,11 +1,8 @@
 /* eslint-disable */
 const loop = (appleCount) => {
   let apple = appleCount
-  for (let i = 0; i <= 999999999; i++) {
-    if (i === 999999999) {
-      apple += 1
-    }
-  }
+  for (let i = 0; i <= 999999999; i++) {}
+  apple += 1
   return apple
 }
 

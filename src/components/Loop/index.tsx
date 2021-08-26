@@ -10,39 +10,38 @@ import {
   SmallHeading, StateHeading, ToggleButtonContainer,
 } from './index.styled';
 
-const LoopComponent : FC = memo(() => {
-  const [tomatoCount, setTomatoCount] = useState<number>(0)
-  const [appleCount, setAppleCount] = useState<number>(0);
+const LoopComponent: FC = memo(() => {
+  const [pizzaCount, setPizzaCount] = useState<number>(0)
+  const [burgerCount, setBurgerCount] = useState<number>(0);
   const [currentMod, setCurrentMod] = useState<boolean>(false);
-  const appleRef = useRef<number>(appleCount);
-  const appleWorker: Worker = new Worker('./workers/worker.js')
+  const burgerRef = useRef<number>(burgerCount);
+  const burgerWorker: Worker = new Worker('./workers/worker.js')
 
   const handleModClick = useCallback(() => {
     setCurrentMod((prevState) => !prevState)
   }, [])
 
   const handleTomatoClick = useCallback(() => {
-    setTomatoCount((prevCount) => prevCount + 1)
+    setPizzaCount((prevCount) => prevCount + 1)
   }, [])
 
   const handleAppleCickWithoutWebWorker = useCallback(() => {
+    // eslint-disable-next-line no-empty
     for (let i = 0; i <= 999999999; i++) {
-      if (i === 999999999) {
-        setAppleCount((prevCount) => prevCount + 1)
-      }
     }
+    setBurgerCount((prevCount) => prevCount + 1)
   }, [])
 
   useEffect(() => {
-    appleWorker.onmessage = (event: MessageEvent) => {
+    burgerWorker.onmessage = (event: MessageEvent) => {
       const { data } = event;
-      setAppleCount(data)
+      setBurgerCount(data)
     }
-  }, [appleWorker]);
+  }, [burgerWorker]);
 
   const handleAppleClick = () => {
-    appleRef.current++;
-    appleWorker.postMessage([appleRef.current])
+    burgerRef.current++;
+    burgerWorker.postMessage([burgerRef.current])
   }
 
   return (
@@ -50,10 +49,10 @@ const LoopComponent : FC = memo(() => {
       <ButtonContainer>
         <IncrementButtonsContainer>
           <Button type="button" onClick={handleTomatoClick}>
-            Tomato
+            Pizza
           </Button>
           <Button type="button" onClick={currentMod ? handleAppleClick : handleAppleCickWithoutWebWorker}>
-            Apple
+            Burger
           </Button>
         </IncrementButtonsContainer>
         <ToggleButtonContainer>
@@ -69,15 +68,15 @@ const LoopComponent : FC = memo(() => {
         </ToggleButtonContainer>
       </ButtonContainer>
       <CountContainer>
-        <Heading>Clicking on Apple will perform heavy Computation</Heading>
+        <Heading>Clicking on Burger will perform heavy Computation</Heading>
       </CountContainer>
       <CountContainer>
-        <Heading>Tomato: </Heading>
-        <StateHeading>{tomatoCount}</StateHeading>
+        <Heading> Pizza: </Heading>
+        <StateHeading>{pizzaCount}</StateHeading>
       </CountContainer>
       <CountContainer>
-        <Heading>Apple: </Heading>
-        <StateHeading>{appleCount}</StateHeading>
+        <Heading> Burger: </Heading>
+        <StateHeading>{burgerCount}</StateHeading>
       </CountContainer>
     </Container>
   )
