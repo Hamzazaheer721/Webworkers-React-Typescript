@@ -59,7 +59,6 @@ export const IncrementButtonsContainer = styled.div`
     & :nth-child(2) {
         margin-left: 10px;
     };
-
 `
 
 export const ToggleButtonContainer = styled.div`
