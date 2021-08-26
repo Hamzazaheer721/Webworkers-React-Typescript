@@ -1,5 +1,4 @@
 import {
-  useRef,
   FC, memo, useCallback, useEffect, useState,
 } from 'react';
 
@@ -14,7 +13,6 @@ const LoopComponent: FC = memo(() => {
   const [pizzaCount, setPizzaCount] = useState<number>(0)
   const [burgerCount, setBurgerCount] = useState<number>(0);
   const [currentMod, setCurrentMod] = useState<boolean>(false);
-  const burgerRef = useRef<number>(burgerCount);
   const burgerWorker: Worker = new Worker('./workers/worker.js')
 
   const handleModClick = useCallback(() => {
@@ -40,8 +38,7 @@ const LoopComponent: FC = memo(() => {
   }, [burgerWorker]);
 
   const handleAppleClick = () => {
-    burgerRef.current++;
-    burgerWorker.postMessage([burgerRef.current])
+    burgerWorker.postMessage([burgerCount])
   }
 
   return (
