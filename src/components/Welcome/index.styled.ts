@@ -22,9 +22,10 @@ export const Wrapper = styled.div`
   border-radius: 10px 50px;
   box-shadow: 5px 10px 20px black;
 `
-export const Text = styled.h2`
+export const Text = styled.h1`
   color: black;
   padding: 50px;
+  font-weight: 600;
 `
 
 export const Button = styled.button`
