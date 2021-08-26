@@ -1,16 +1,16 @@
 /* eslint-disable */
-const loop = (appleCount) => {
-  let apple = appleCount
+const loop = (burgerCount) => {
+  let burger = burgerCount
   for (let i = 0; i <= 999999999; i++) {}
-  apple += 1
-  return apple
+  burger += 1
+  return burger
 }
 
 self.onmessage = (e) => {
   const { data } = e
   if (data.length === 1) {
-    const appleCount = loop(data[0])
-    self.postMessage(appleCount)
+    const burgerCount = loop(data[0])
+    self.postMessage(burgerCount)
   }
   if (data.length === 2) {
     let _array = []

@@ -23,12 +23,16 @@ const LoopComponent: FC = memo(() => {
     setPizzaCount((prevCount) => prevCount + 1)
   }, [])
 
-  const handleAppleCickWithoutWebWorker = useCallback(() => {
+  const handleBurgerCickWithoutWebWorker = useCallback(() => {
     // eslint-disable-next-line no-empty
     for (let i = 0; i <= 999999999; i++) {
     }
     setBurgerCount((prevCount) => prevCount + 1)
   }, [])
+
+  const handleBurgerClick = useCallback(() => {
+    burgerWorker.postMessage([burgerCount])
+  }, [burgerWorker])
 
   useEffect(() => {
     burgerWorker.onmessage = (event: MessageEvent) => {
@@ -37,10 +41,6 @@ const LoopComponent: FC = memo(() => {
     }
   }, [burgerWorker]);
 
-  const handleAppleClick = useCallback(() => {
-    burgerWorker.postMessage([burgerCount])
-  }, [burgerWorker])
-
   return (
     <Container>
       <ButtonContainer>
@@ -48,7 +48,7 @@ const LoopComponent: FC = memo(() => {
           <Button type="button" onClick={handleTomatoClick}>
             Pizza
           </Button>
-          <Button type="button" onClick={currentMode ? handleAppleClick : handleAppleCickWithoutWebWorker}>
+          <Button type="button" onClick={currentMode ? handleBurgerClick : handleBurgerCickWithoutWebWorker}>
             Burger
           </Button>
         </IncrementButtonsContainer>
