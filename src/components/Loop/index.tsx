@@ -25,8 +25,7 @@ const LoopComponent: FC = memo(() => {
 
   const handleBurgerCickWithoutWebWorker = useCallback(() => {
     // eslint-disable-next-line no-empty
-    for (let i = 0; i <= 999999999; i++) {
-    }
+    for (let i = 0; i <= 999999999; i++) { }
     setBurgerCount((prevCount) => prevCount + 1)
   }, [])
 
