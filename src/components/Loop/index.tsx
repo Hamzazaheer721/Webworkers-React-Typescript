@@ -15,11 +15,11 @@ const LoopComponent: FC = memo(() => {
   const [currentMode, setCurrentMode] = useState<boolean>(false);
   const burgerWorker: Worker = new Worker('./workers/worker.js')
 
-  const handleModClick = useCallback(() => {
+  const handleModeClick = useCallback(() => {
     setCurrentMode((prevState) => !prevState)
   }, [])
 
-  const handleTomatoClick = useCallback(() => {
+  const handlePizzaClick = useCallback(() => {
     setPizzaCount((prevCount) => prevCount + 1)
   }, [])
 
@@ -45,7 +45,7 @@ const LoopComponent: FC = memo(() => {
     <Container>
       <ButtonContainer>
         <IncrementButtonsContainer>
-          <Button type="button" onClick={handleTomatoClick}>
+          <Button type="button" onClick={handlePizzaClick}>
             Pizza
           </Button>
           <Button type="button" onClick={currentMode ? handleBurgerClick : handleBurgerCickWithoutWebWorker}>
@@ -53,7 +53,7 @@ const LoopComponent: FC = memo(() => {
           </Button>
         </IncrementButtonsContainer>
         <ToggleButtonContainer>
-          <Button type="button" onClick={handleModClick} toggleButton>
+          <Button type="button" onClick={handleModeClick} toggleButton>
             Toggle Mode
           </Button>
           <SmallHeading>
