@@ -31,14 +31,14 @@ const LoopComponent: FC = memo(() => {
 
   const handleBurgerClick = useCallback(() => {
     burgerWorker.postMessage([burgerCount])
-  }, [burgerWorker])
+  }, [])
 
   useEffect(() => {
     burgerWorker.onmessage = (event: MessageEvent) => {
       const { data } = event;
       setBurgerCount(data)
     }
-  }, [burgerWorker]);
+  }, []);
 
   return (
     <Container>
