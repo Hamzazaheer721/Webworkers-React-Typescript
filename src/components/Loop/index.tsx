@@ -13,7 +13,7 @@ const LoopComponent: FC = memo(() => {
   const [pizzaCount, setPizzaCount] = useState<number>(0)
   const [burgerCount, setBurgerCount] = useState<number>(0);
   const [currentMode, setCurrentMode] = useState<boolean>(false);
-  const burgerWorker: Worker = new Worker('./workers/worker.js')
+  const burgerWorker: Worker = new Worker('./workers/worker.ts')
 
   const handleModeClick = useCallback(() => {
     setCurrentMode((prevState) => !prevState)
